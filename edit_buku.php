@@ -115,66 +115,92 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title><?= $en ? "Edit Book" : "Edit Buku" ?></title>
 </head>
 <body>
-    <p>
-        <a href="edit_buku.php?id=<?= (int)$id ?>&lang=id">Indonesia</a> |
-        <a href="edit_buku.php?id=<?= (int)$id ?>&lang=en">English</a>
-    </p>
+    <table width="100%" height="100%">
+        <tr>
+            <td align="center" valign="middle">
 
-    <h1><?= $en ? "Edit Book" : "Edit Buku" ?></h1>
+                <p>
+                    <a href="edit_buku.php?id=<?= (int)$id ?>&lang=id">Indonesia</a> |
+                    <a href="edit_buku.php?id=<?= (int)$id ?>&lang=en">English</a>
+                </p>
 
-    <?php if ($error != ""): ?>
-        <p style="color: red;">
-            <?= htmlspecialchars($error) ?>
-        </p>
-    <?php endif; ?>
+                <h1><?= $en ? "Edit Book" : "Edit Buku" ?></h1>
 
-    <form method="POST" action="edit_buku.php?id=<?= (int)$id ?>">
-        <label><?= $en ? "Book Code:" : "Kode Buku:" ?></label><br>
-        <input type="text" name="kode_buku"
-            value="<?= htmlspecialchars((string)$buku["kode_buku"]) ?>"
-            required>
-        <br><br>
+                <?php if ($error != ""): ?>
+                    <p style="color: red;">
+                        <?= htmlspecialchars($error) ?>
+                    </p>
+                <?php endif; ?>
 
-        <label><?= $en ? "Book Title:" : "Judul Buku:" ?></label><br>
-        <input type="text" name="judul"
-            value="<?= htmlspecialchars((string)$buku["judul"]) ?>"
-            required>
-        <br><br>
+                <form method="POST" action="edit_buku.php?id=<?= (int)$id ?>">
+                    <table cellpadding="6" align="center">
+                        <tr>
+                            <td align="left"><?= $en ? "Book Code" : "Kode Buku" ?></td>
+                            <td>
+                                <input type="text" name="kode_buku" size="30"
+                                    value="<?= htmlspecialchars((string)$buku["kode_buku"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left"><?= $en ? "Book Title" : "Judul Buku" ?></td>
+                            <td>
+                                <input type="text" name="judul" size="30"
+                                    value="<?= htmlspecialchars((string)$buku["judul"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left"><?= $en ? "Author" : "Penulis" ?></td>
+                            <td>
+                                <input type="text" name="penulis" size="30"
+                                    value="<?= htmlspecialchars((string)$buku["penulis"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left"><?= $en ? "Publisher" : "Penerbit" ?></td>
+                            <td>
+                                <input type="text" name="penerbit" size="30"
+                                    value="<?= htmlspecialchars((string)$buku["penerbit"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left"><?= $en ? "Publication Year" : "Tahun Terbit" ?></td>
+                            <td>
+                                <input type="number" name="tahun_terbit" size="30"
+                                    min="1901" max="<?= date('Y') ?>"
+                                    value="<?= htmlspecialchars((string)$buku["tahun_terbit"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left"><?= $en ? "Stock" : "Stok" ?></td>
+                            <td>
+                                <input type="number" name="stok" size="30" min="0"
+                                    value="<?= htmlspecialchars((string)$buku["stok"]) ?>"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button type="submit">
+                                    <?= $en ? "Save Changes" : "Simpan Perubahan" ?>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
 
-        <label><?= $en ? "Author:" : "Penulis:" ?></label><br>
-        <input type="text" name="penulis"
-            value="<?= htmlspecialchars((string)$buku["penulis"]) ?>"
-            required>
-        <br><br>
+                <p>
+                    <a href="index.php">
+                        <?= $en ? "Back to Catalog" : "Kembali ke Katalog" ?>
+                    </a>
+                </p>
 
-        <label><?= $en ? "Publisher:" : "Penerbit:" ?></label><br>
-        <input type="text" name="penerbit"
-            value="<?= htmlspecialchars((string)$buku["penerbit"]) ?>"
-            required>
-        <br><br>
-
-        <label><?= $en ? "Publication Year:" : "Tahun Terbit:" ?></label><br>
-        <input type="number" name="tahun_terbit"
-            min="1901" max="<?= date('Y') ?>"
-            value="<?= htmlspecialchars((string)$buku["tahun_terbit"]) ?>"
-            required>
-        <br><br>
-
-        <label><?= $en ? "Stock:" : "Stok:" ?></label><br>
-        <input type="number" name="stok" min="0"
-            value="<?= htmlspecialchars((string)$buku["stok"]) ?>"
-            required>
-        <br><br>
-
-        <button type="submit">
-            <?= $en ? "Save Changes" : "Simpan Perubahan" ?>
-        </button>
-    </form>
-
-    <p>
-        <a href="index.php">
-            <?= $en ? "Back to Catalog" : "Kembali ke Katalog" ?>
-        </a>
-    </p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

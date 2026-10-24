@@ -39,30 +39,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Login - Katalog Buku</title>
 </head>
 <body>
-    <h2>Login Katalog Buku</h2>
+    <table align="center">
+        <tr>
+            <td>
+                <h2>Login Katalog Buku</h2>
 
-    <?php if ($error != ""): ?>
-        <p style="color: red;">
-            <?= htmlspecialchars($error) ?>
-        </p>
-    <?php endif; ?>
-    <form method="POST" action="login.php">
-        <label>Username:</label><br>
-        <input type="text" name="username" required>
-        <br><br>
+                <?php if ($error != ""): ?>
+                    <p style="color: red;">
+                        <?= htmlspecialchars($error) ?>
+                    </p>
+                <?php endif; ?>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-    </form>
+                <form method="POST" action="login.php">
+                    <table class="form-table" align="center">
+                        <tr>
+                            <td>Username : </td>
+                            <td><input type="text" name="username" required></td>
+                        </tr>
+                        <tr>
+                            <td>Password : </td>
+                            <td><input type="password" name="password" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <button type="submit">Login</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
